@@ -25,7 +25,6 @@ mkdir -p ${current}
 # Loop through and move all random items in desktop to our current dir
 for item in ${clean}/*; do
     if [ "$item" != "$save" -a "$item" != "$storage" -a "$item" != "$symlink" ]; then
-        echo "mv $item $current"
         mv $item $current
     fi
 done
