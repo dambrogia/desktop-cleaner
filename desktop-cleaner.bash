@@ -19,8 +19,10 @@ storage="$HOME/Desktop/storage"
 current="$storage/$Y/$m/$d"
 symlink="$HOME/Desktop/current"
 
-# Create current folder if doesn't exist
-mkdir -p ${current}
+# Create all folders if they don't exist
+[ ! -d ${save} ] && mkdir -p ${save}
+[ ! -d ${storage} ] && mkdir -p ${storage}
+[ ! -d ${current} ] && mkdir -p ${current}
 
 # Loop through and move all random items in desktop to our current dir
 for item in ${clean}/*; do
