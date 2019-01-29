@@ -15,6 +15,7 @@ d=`date '+%d'`
 # Directory vars
 clean="$HOME/Desktop"
 save="$HOME/Desktop/save"
+tmp="$HOME/Desktop/tmp"
 storage="$HOME/Desktop/storage"
 current="$storage/$Y/$m/$d"
 symlink="$HOME/Desktop/current"
@@ -26,7 +27,7 @@ symlink="$HOME/Desktop/current"
 
 # Loop through and move all random items in desktop to our current dir
 for item in ${clean}/*; do
-    if [ "$item" != "$save" -a "$item" != "$storage" -a "$item" != "$symlink" ]; then
+    if [ "$item" != "$save" -a "$item" != "$storage" -a "$item" != "$symlink" -a "$item" != "$tmp" ]; then
         mv "$item" "$current"
     fi
 done
