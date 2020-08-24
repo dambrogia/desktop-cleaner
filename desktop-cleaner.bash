@@ -41,5 +41,10 @@ done
 [ -L $symlink ] && rm $symlink
 ln -s $current $symlink
 
+# Find any large files and move them to tmp.
+# for f in $(find . -type f -size +25M); do
+#    mv "$f" "$tmp"
+# done
+
 exit 0;
 
