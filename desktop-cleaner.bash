@@ -16,6 +16,7 @@ d=`date '+%d'`
 clean="$HOME/Desktop"
 save="$HOME/Desktop/save"
 tmp="$HOME/Desktop/tmp"
+tmpCurrent="$tmp/$Y/$m/$d"
 storage="$HOME/Desktop/storage"
 current="$storage/$Y/$m/$d"
 symlink="$HOME/Desktop/current"
@@ -42,9 +43,10 @@ done
 ln -s $current $symlink
 
 # Find any large files and move them to tmp.
-# for f in $(find . -type f -size +25M); do
-#    mv "$f" "$tmp"
-# done
+for f in $(find ${storage} -type f -size +25M); do
+    mkdir -p $tmpCurrent
+    mv "$f" "$tmpCurrent"
+done
 
 exit 0;
 
