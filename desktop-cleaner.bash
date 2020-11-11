@@ -23,8 +23,13 @@ symlink="$HOME/Desktop/current"
 
 # Remove empty dirs.
 # This needs to be done before save/storage/current are init'd
-empty_dirs=$(find ${storage} -maxdepth 3 -type d -empty)
-for dir in $empty_dirs; do rmdir ${dir}; done
+while read dir
+do
+  while read emptyDir
+  do
+    [ "$emptyDir" != "" ] && [ "$emptyDir" != "$clean" ] && rmdir $emptyDir
+  done <<< "$(find $dir -maxdepth 0 -empty)"
+done <<< "$(find $clean -type d | tac)"
 
 # Create all folders if they don't exist
 [ ! -d ${save} ] && mkdir -p ${save}
