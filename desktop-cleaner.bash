@@ -43,10 +43,10 @@ done
 ln -s $current $symlink
 
 # Find any large files and move them to tmp.
-for f in $(find ${storage} -type f -size +25M); do
+while read -r f; do
     mkdir -p $tmpCurrent
     mv "$f" "$tmpCurrent"
-done
+done < <(find ${storage} -type f -size +25M)
 
 exit 0;
 

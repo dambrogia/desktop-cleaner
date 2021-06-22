@@ -11,7 +11,7 @@ Add the following to your cron setup: (*nix)
 
     $ crontab -e
 
-    * * * * * <full-path-to-repo>/desktop-cleaner.bash
+    */15 * * * * <full-path-to-repo>/desktop-cleaner.bash
 
 For help customizing your cron schedule visit: https://crontab.guru/
 
